@@ -1,0 +1,66 @@
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using Starshot.TimeTracker.Repository.UnitOfWork;
+using Starshot.TimeTracker.Requests;
+using Starshot.TimeTracker.Responses;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
+namespace Starshot.TimeTracker.Core.Services.AuthService
+{
+    public class AuthServiceManager:IAuthServiceManager
+    {
+        private readonly ITimeTrackerUnitOfWork _timeTrackerUnitOfWork;
+        private readonly ILogger<AuthServiceManager> _logger;
+        private readonly IConfiguration _configuration;
+        public AuthServiceManager(ITimeTrackerUnitOfWork timeTrackerUnitOfWork, ILogger<AuthServiceManager> logger,IConfiguration configuration) {
+        _logger = logger;
+        _timeTrackerUnitOfWork = timeTrackerUnitOfWork;
+         _configuration = configuration;
+        }
+        public async Task<AuthResponse> AuthAsync(AuthRequest request)
+        {
+            try
+            {
+
+                               
+
+#if DEBUG
+                var user = await _timeTrackerUnitOfWork.UserRepository.GetAsync(x => x.UserName.ToLower() == request.UserName.ToLower());
+#else
+                var user = await _timeTrackerUnitOfWork.UserRepository.GetAsync(x => x.UserName.ToLower() == request.UserName.ToLower() && x.Password == request.Password);
+#endif 
+                if (user == null)
+                    return new AuthResponse { Code = 401, Message = "Invalid password or username!" };
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
+                var expiry = DateTime.UtcNow.AddMinutes(30);
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                           new Claim("id", user.Id.ToString()), // 0 = Id
+                           new Claim(ClaimTypes.Name,user.Name) //2 = Branch 
+                    }),
+                    Expires = expiry,
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+
+                string jwtToken = new JwtSecurityTokenHandler().WriteToken(token);
+                return new AuthResponse
+                {
+                    Token = jwtToken,
+                    Expiry = expiry,
+                    Id = user.Id
+                };
+            }
+            catch (Exception ex) { 
+             _logger.LogError(ex.Message, ex);
+                throw;            
+            }
+        }
+    }
+}

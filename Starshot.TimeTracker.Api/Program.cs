@@ -1,3 +1,14 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Starshot.TimeTracker.Core.Services.AuthService;
+using Starshot.TimeTracker.Core.Services.EmployeeService;
+using Starshot.TimeTracker.Data;
+using Starshot.TimeTracker.Repository.UnitOfWork;
+using System.Reflection;
+using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,8 +17,38 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
+builder.Services.AddDbContext<TimeTrackerDbContext>(options => options
+            .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Startshot-TimeTracker-Db;Trusted_Connection=True;MultipleActiveResultSets=true")
+            );
+builder.Services.AddScoped<ITimeTrackerUnitOfWork,TimeTrackerUnitOfWork>();
+builder.Services.AddScoped<IAuthServiceManager,AuthServiceManager>();
+builder.Services.AddScoped<IEmployeeServiceManager,EmployeeServiceManager>();
+
 
 var app = builder.Build();
+//Migrate db
+using (var scope =
+  app.Services.CreateScope())
+using (var context = scope.ServiceProvider.GetService<TimeTrackerDbContext>())
+    context.Database.Migrate();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -18,6 +59,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

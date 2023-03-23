@@ -11,7 +11,7 @@ namespace Starshot.TimeTracker.Data.Migrations
             DbContextOptionsBuilder<TimeTrackerDbContext> optionsBuilder = new DbContextOptionsBuilder<TimeTrackerDbContext>()
           .UseSqlServer("Server=RC-17;Database=TimeTrackerDb;Trusted_Connection=True;TrustServerCertificate=True;");
            var settings = new Dictionary<string, string> {
-           {"Security:Key", "3c422d85-b07e-4aa2-8a17-b10cddf3e922"}};
+           {"Security:Key", "{0FA740C5-6134-456E-BCF3-53DECCC6A4BB}"}};
 
             IConfiguration configuration = new ConfigurationBuilder()
                 .AddInMemoryCollection(settings)

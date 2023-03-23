@@ -9,7 +9,7 @@ using Starshot.TimeTracker.Responses;
 
 namespace Starshot.TimeTracker.Core.Services.EmployeeService
 {
-    internal class EmployeeServiceManager
+    public class EmployeeServiceManager:IEmployeeServiceManager
     {
         private readonly ITimeTrackerUnitOfWork _timeTrackerUnitOfWork;
         private readonly ILogger<EmployeeServiceManager> _logger;
