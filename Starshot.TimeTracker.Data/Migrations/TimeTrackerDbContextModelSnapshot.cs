@@ -54,7 +54,7 @@ namespace Starshot.TimeTracker.Data.Migrations
                     b.Property<DateTime>("ClockIn")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("ClockOut")
+                    b.Property<DateTime>("ClockOut")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserIdFk")
@@ -101,7 +101,7 @@ namespace Starshot.TimeTracker.Data.Migrations
                         {
                             Id = 1,
                             Name = "Admin",
-                            Password = "EWg/egxSYtJF09Yk27BMmZLgRzxvb9S8ITepAmtekntplRI19QLSXp4PR1rrVc8y",
+                            Password = "w9+2YBPhjWXqADAJcrlXT6ljFrXLKAI5C6iK+kmliJjS9RTRbqZaQ1WcelNxprGr",
                             UserName = "Admin"
                         });
                 });

@@ -1,11 +1,8 @@
 ﻿using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components;
-using Refit;
 using Starshot.TimeTracker.Clients;
-using Starshot.TimeTracker.Common.Security;
 using Starshot.TimeTracker.Requests;
 using Starshot.TimeTracker.Responses;
-using System.IO;
 
 namespace Starshot.TimeTracker.Web.Services.AuthService
 {
@@ -14,7 +11,7 @@ namespace Starshot.TimeTracker.Web.Services.AuthService
         private readonly ILocalStorageService _localStorageService;
         private readonly IAuthServiceClient _authServiceClient;
         private readonly NavigationManager _navigationManager;
-        private const string Key = "x-auth";
+        private const string Key = "x-auth-token";
         public AuthServiceManager(ILocalStorageService localStorageService, IAuthServiceClient authServiceClient,NavigationManager navigationManager)
         {
             _localStorageService = localStorageService;
@@ -53,12 +50,11 @@ namespace Starshot.TimeTracker.Web.Services.AuthService
         {
             try
             {
-                //Todo:Get this key from azure keyvault 
-                string key = "{0FA740C5-6134-456E-BCF3-53DECCC6A4BB}";
+                //Todo:encrypt password
                 var response = await _authServiceClient.AuthAsync(new AuthRequest
                 {
                     UserName = username,
-                    Password = AesCrypto.Encrypt(password,key)
+                    Password = password
                 });
                 await _localStorageService.SetItemAsync(Key, response);
                 _navigationManager.NavigateTo(path);

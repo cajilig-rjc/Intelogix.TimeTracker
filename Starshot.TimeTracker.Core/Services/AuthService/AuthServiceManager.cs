@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Starshot.TimeTracker.Common.Security;
 using Starshot.TimeTracker.Repository.UnitOfWork;
 using Starshot.TimeTracker.Requests;
 using Starshot.TimeTracker.Responses;
@@ -24,12 +25,17 @@ namespace Starshot.TimeTracker.Core.Services.AuthService
         {
             try
             {
+                string seckey = _configuration["Security:Key"];
 
 
 
-                var user = await _timeTrackerUnitOfWork.UserRepository.GetAsync(x => x.UserName.ToLower() == request.UserName.ToLower() && x.Password == request.Password);
+                var user = await _timeTrackerUnitOfWork.UserRepository.GetAsync(x => x.UserName.ToLower() == request.UserName.ToLower());
+                
                 if (user == null)
-                    return new AuthResponse { Code = 401, Message = "Invalid password or username!" };
+                    return new AuthResponse { Code = 401, Message = "Invalid Username!" };
+                if(AesCrypto.Decrypt(user.Password, seckey) != request.Password)
+                    return new AuthResponse { Code = 401, Message = "Invalid Password!" };
+
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
                 var expiry = DateTime.UtcNow.AddMinutes(30);

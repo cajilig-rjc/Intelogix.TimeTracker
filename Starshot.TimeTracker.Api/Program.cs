@@ -36,7 +36,7 @@ builder.Services.AddAuthentication(x =>
     };
 });
 builder.Services.AddDbContext<TimeTrackerDbContext>(options => options
-            .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Startshot-TimeTracker-Db;Trusted_Connection=True;MultipleActiveResultSets=true")
+            .UseSqlServer(builder.Configuration["ConnectionString"])
             );
 builder.Services.AddScoped<ITimeTrackerUnitOfWork,TimeTrackerUnitOfWork>();
 builder.Services.AddScoped<IAuthServiceManager,AuthServiceManager>();

@@ -48,7 +48,7 @@ namespace Starshot.TimeTracker.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserIdFk = table.Column<int>(type: "int", nullable: false),
                     ClockIn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ClockOut = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    ClockOut = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,7 +64,7 @@ namespace Starshot.TimeTracker.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Name", "Password", "UserName" },
-                values: new object[] { 1, "Admin", "EWg/egxSYtJF09Yk27BMmZLgRzxvb9S8ITepAmtekntplRI19QLSXp4PR1rrVc8y", "Admin" });
+                values: new object[] { 1, "Admin", "w9+2YBPhjWXqADAJcrlXT6ljFrXLKAI5C6iK+kmliJjS9RTRbqZaQ1WcelNxprGr", "Admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_TimeSheets_UserIdFk",

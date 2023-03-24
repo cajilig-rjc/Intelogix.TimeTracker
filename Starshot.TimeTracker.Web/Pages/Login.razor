@@ -11,10 +11,11 @@
 
 <br/>
 <br/>
-<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SignInAsync" Size="Size.Large" FullWidth="true">Sign In</MudButton>
+<MudButton Disabled="@IsDisabled" Variant="Variant.Filled" Color="Color.Primary" OnClick="SignInAsync" Size="Size.Large" FullWidth="true">Sign In</MudButton>
 
 
 @code {
+    bool IsDisabled = false;
     string Password { get; set; } = "P4ssw0rd";
     string UserName { get; set; } = "Admin";
     bool PasswordVisibility;
@@ -29,12 +30,15 @@
     }
     private async Task SignInAsync()
     {
+        IsDisabled = true;
         await AuthService.SignInAsync(UserName,Password);
         await DialogService.ShowMessageBox(
-         "",
-         (MarkupString)$"<h3 class='text-error'><b>Success</b></h3><br/><p>Invalid username or password</b> login failed!</p>",
-         yesText: "Ok");
+     "Login Failed",
+     (MarkupString)$"<h3 class='text-warning'><b>Login Failed</b></h3><br/><p>Invalid username or password</b> login failed!</p>",
+     yesText: "Ok");
+        IsDisabled = false;
     }
+
     void TogglePasswordVisibility()
     {
         @if (PasswordVisibility)

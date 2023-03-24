@@ -1,4 +1,5 @@
-﻿@page "/employees"
+﻿@page "/"
+@page "/employees"
 @using Starshot.TimeTracker.Dtos;
 @inject IEmployeeServiceClient EmployeeService
 <PageTitle>Employees</PageTitle>
@@ -7,7 +8,7 @@
     <MudSpacer />
     <MudBreadcrumbs Items="BreadcrumbItem"></MudBreadcrumbs>
 </MudToolBar>
-<MudTable Class="mb-10" Loading="true" ServerData="@(new Func<TableState, Task<TableData<ReadEmployeeDto>>>(ServerReload))" Dense="true" Hover="true" Striped="true" @ref="EmployeeTable">
+<MudTable Class="item-card mx-auto my-auto rounded-xl" Style="padding:20px;max-width:1000px" Loading="true" ServerData="@(new Func<TableState, Task<TableData<ReadEmployeeDto>>>(ServerReload))" Dense="true" Hover="true" Striped="true" @ref="EmployeeTable">
     <ToolBarContent>
         <MudFab Size="Size.Small" Color="Color.Primary" Class="pa-2" OnClick="Create" StartIcon="@Icons.Filled.Add" />
         <MudSpacer />
@@ -22,19 +23,19 @@
     </ToolBarContent>
     <HeaderContent>
         <MudTh>Id</MudTh>
-        <MudTh>Name</MudTh>
+        <MudTh>FullName</MudTh>
         <MudTh>IsActive</MudTh>
         <MudTh>Actions</MudTh>
     </HeaderContent>
     <RowTemplate>
         <MudTd DataLabel="Id">@context.Id</MudTd>
-        <MudTd DataLabel="Name">@context.Name</MudTd>
+        <MudTd DataLabel="FullName">@context.Name</MudTd>
         <MudTd DataLabel="Active">@context.IsActive</MudTd>
         <MudTd DataLabel="Actions">
             <MudToolBar>
                 <MudSpacer />
-                <MudFab Class="ma-1" Size="Size.Small" Color="Color.Info" StartIcon="@Icons.Material.Filled.PunchClock" />
-                <MudFab Class="ma-1" Size="Size.Small" Color="Color.Info"  StartIcon="@Icons.Material.Filled.Edit" />
+                <MudFab Class="ma-1" Size="Size.Small" Color="Color.Primary" StartIcon="@Icons.Material.Filled.LockClock" OnClick="()=>TimeSheet(context.Id)" />
+                <MudFab Class="ma-1" Size="Size.Small" Color="Color.Primary"  StartIcon="@Icons.Material.Filled.Edit" OnClick="()=>Edit(context.Id)" />
             </MudToolBar>
         </MudTd>
     </RowTemplate>
@@ -90,7 +91,7 @@
     {
         NavigationManager.NavigateTo($"/employees/edit/{id}");
     }
-    private void CreateTimeSheet(int id)
+    private void TimeSheet(int id)
     {
         NavigationManager.NavigateTo($"/employees/timesheet/{id}");
     }
