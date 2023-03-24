@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Starshot.TimeTracker.Api/Properties/ServiceDependencies/starshot-api - Web Deploy
+/Starshot.TimeTracker.Api/.config
