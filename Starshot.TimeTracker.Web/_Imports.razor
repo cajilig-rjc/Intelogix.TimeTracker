@@ -6,5 +6,11 @@
 @using Microsoft.AspNetCore.Components.Web.Virtualization
 @using Microsoft.AspNetCore.Components.WebAssembly.Http
 @using Microsoft.JSInterop
+@using Starshot.TimeTracker.Clients;
 @using Starshot.TimeTracker.Web
+@using Starshot.TimeTracker.Web.Services.AuthService;
 @using Starshot.TimeTracker.Web.Shared
+@using MudBlazor
+@inject NavigationManager NavigationManager
+@inject IAuthServiceManager AuthService
+@inject IDialogService DialogService

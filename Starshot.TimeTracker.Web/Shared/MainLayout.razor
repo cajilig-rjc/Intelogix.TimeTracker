@@ -1,17 +1,53 @@
 ﻿@inherits LayoutComponentBase
+<style>
+    .popover {
+        width: 200px;
+    }
+</style>
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
-<div class="page">
-    <div class="sidebar">
+<MudLayout>
+    <MudAppBar Elevation="0">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudSpacer />
+        <MudText Typo="Typo.body1" Style="margin-right:10px">How Dy, @UserName!</MudText>
+        <MudIconButton Icon="@Icons.Material.Filled.Logout" Color="Color.Error" Edge="Edge.Start" OnClick="LogOutAsync" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h5">STARSHOT</MudText>
+        </MudDrawerHeader>
         <NavMenu />
-    </div>
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Fixed="true" Class="ma-20">
+            @Body        
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
+@code {
+    bool _isOpenUserPopover = false;
+    string UserName{ get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        UserName = await AuthService.GetNameAsync();
+    }
+    void UserPopoverToggle()
+    {
+        _isOpenUserPopover = !_isOpenUserPopover;
+    }
+    bool _drawerOpen = true;
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+    async Task LogOutAsync()
+    {
+        await AuthService.SignOutAsync();
+    }
+    
+}

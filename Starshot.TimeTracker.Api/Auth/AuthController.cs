@@ -21,5 +21,6 @@ namespace Starshot.TimeTracker.Api.Auth
                 return StatusCode(result.Code.Value, result.Message);
             return Ok(result);
         }
+
     }
 }

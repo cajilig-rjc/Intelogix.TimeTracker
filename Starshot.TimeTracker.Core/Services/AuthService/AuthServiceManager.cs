@@ -25,13 +25,9 @@ namespace Starshot.TimeTracker.Core.Services.AuthService
             try
             {
 
-                               
 
-#if DEBUG
-                var user = await _timeTrackerUnitOfWork.UserRepository.GetAsync(x => x.UserName.ToLower() == request.UserName.ToLower());
-#else
+
                 var user = await _timeTrackerUnitOfWork.UserRepository.GetAsync(x => x.UserName.ToLower() == request.UserName.ToLower() && x.Password == request.Password);
-#endif 
                 if (user == null)
                     return new AuthResponse { Code = 401, Message = "Invalid password or username!" };
                 var tokenHandler = new JwtSecurityTokenHandler();
@@ -54,7 +50,8 @@ namespace Starshot.TimeTracker.Core.Services.AuthService
                 {
                     Token = jwtToken,
                     Expiry = expiry,
-                    Id = user.Id
+                    Id = user.Id,
+                    UserName = user.UserName
                 };
             }
             catch (Exception ex) { 

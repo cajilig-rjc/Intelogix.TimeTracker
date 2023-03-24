@@ -15,7 +15,7 @@ namespace Starshot.TimeTracker.Api.Employees
         {
             _employeeServiceManager = employeeServiceManager;
         }
-        [HttpGet("{employeeId}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync([FromRoute]int id)
         {
             var result = await _employeeServiceManager.GetAsync(new GetEmployeeRequest

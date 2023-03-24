@@ -42,8 +42,19 @@ builder.Services.AddScoped<ITimeTrackerUnitOfWork,TimeTrackerUnitOfWork>();
 builder.Services.AddScoped<IAuthServiceManager,AuthServiceManager>();
 builder.Services.AddScoped<IEmployeeServiceManager,EmployeeServiceManager>();
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Default",
+                          policy =>
+                          {
+                              policy.
+                              AllowAnyOrigin()
+                              .AllowAnyHeader()
+                              .AllowAnyMethod();
+                          });
+});
 var app = builder.Build();
+app.UseCors("Default");
 //Migrate db
 using (var scope =
   app.Services.CreateScope())

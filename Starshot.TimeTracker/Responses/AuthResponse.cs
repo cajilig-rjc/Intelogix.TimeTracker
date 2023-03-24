@@ -6,6 +6,7 @@ namespace Starshot.TimeTracker.Responses
     {
         public string Token { get; set; }
         public DateTime Expiry { get; set; }
+        public string UserName { get;set; }
         public int Id { get; set; }
 
     }
