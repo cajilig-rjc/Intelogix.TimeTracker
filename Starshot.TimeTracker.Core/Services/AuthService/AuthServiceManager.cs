@@ -1,15 +1,15 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Starshot.TimeTracker.Common.Security;
-using Starshot.TimeTracker.Repository.UnitOfWork;
-using Starshot.TimeTracker.Requests;
-using Starshot.TimeTracker.Responses;
+using Intelogix.TimeTracker.Common.Security;
+using Intelogix.TimeTracker.Repository.UnitOfWork;
+using Intelogix.TimeTracker.Requests;
+using Intelogix.TimeTracker.Responses;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Starshot.TimeTracker.Core.Services.AuthService
+namespace Intelogix.TimeTracker.Core.Services.AuthService
 {
     public class AuthServiceManager:IAuthServiceManager
     {

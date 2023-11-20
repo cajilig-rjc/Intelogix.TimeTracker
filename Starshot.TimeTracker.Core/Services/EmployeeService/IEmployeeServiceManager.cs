@@ -1,7 +1,7 @@
-﻿using Starshot.TimeTracker.Requests;
-using Starshot.TimeTracker.Responses;
+﻿using Intelogix.TimeTracker.Requests;
+using Intelogix.TimeTracker.Responses;
 
-namespace Starshot.TimeTracker.Core.Services.EmployeeService
+namespace Intelogix.TimeTracker.Core.Services.EmployeeService
 {
     public interface IEmployeeServiceManager
     {

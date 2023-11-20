@@ -1,10 +1,10 @@
 ﻿using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components;
-using Starshot.TimeTracker.Clients;
-using Starshot.TimeTracker.Requests;
-using Starshot.TimeTracker.Responses;
+using Intelogix.TimeTracker.Clients;
+using Intelogix.TimeTracker.Requests;
+using Intelogix.TimeTracker.Responses;
 
-namespace Starshot.TimeTracker.Web.Services.AuthService
+namespace Intelogix.TimeTracker.Web.Services.AuthService
 {
     public class AuthServiceManager: IAuthServiceManager
     {

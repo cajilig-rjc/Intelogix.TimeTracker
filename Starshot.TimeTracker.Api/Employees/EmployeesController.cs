@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Starshot.TimeTracker.Core.Services.EmployeeService;
-using Starshot.TimeTracker.Requests;
+using Intelogix.TimeTracker.Core.Services.EmployeeService;
+using Intelogix.TimeTracker.Requests;
 
-namespace Starshot.TimeTracker.Api.Employees
+namespace Intelogix.TimeTracker.Api.Employees
 {
     [Authorize]
     [Route("api/[controller]")]

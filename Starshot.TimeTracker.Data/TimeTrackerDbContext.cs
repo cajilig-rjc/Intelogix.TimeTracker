@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Starshot.TimeTracker.Data.Configs;
-using Starshot.TimeTracker.Data.Models;
+using Intelogix.TimeTracker.Data.Configs;
+using Intelogix.TimeTracker.Data.Models;
 
-namespace Starshot.TimeTracker.Data
+namespace Intelogix.TimeTracker.Data
 {
     public class TimeTrackerDbContext:DbContext
     {

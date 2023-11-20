@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Starshot.TimeTracker.Core.Services.AuthService;
-using Starshot.TimeTracker.Requests;
+using Intelogix.TimeTracker.Core.Services.AuthService;
+using Intelogix.TimeTracker.Requests;
 
-namespace Starshot.TimeTracker.Api.Auth
+namespace Intelogix.TimeTracker.Api.Auth
 {
     [Route("api/[controller]")]
     [ApiController]

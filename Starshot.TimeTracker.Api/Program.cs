@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Starshot.TimeTracker.Core.Services.AuthService;
-using Starshot.TimeTracker.Core.Services.EmployeeService;
-using Starshot.TimeTracker.Data;
-using Starshot.TimeTracker.Repository.UnitOfWork;
+using Intelogix.TimeTracker.Core.Services.AuthService;
+using Intelogix.TimeTracker.Core.Services.EmployeeService;
+using Intelogix.TimeTracker.Data;
+using Intelogix.TimeTracker.Repository.UnitOfWork;
 using System.Reflection;
 using System.Text;
 

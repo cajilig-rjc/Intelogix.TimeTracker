@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace Starshot.TimeTracker.Data.Migrations
+namespace Intelogix.TimeTracker.Data.Migrations
 {
     internal class TimeTrackerDbContextMigration : IDesignTimeDbContextFactory<TimeTrackerDbContext>
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Starshot.TimeTracker.Data.Models;
+using Intelogix.TimeTracker.Data.Models;
 
-namespace Starshot.TimeTracker.Data.Configs
+namespace Intelogix.TimeTracker.Data.Configs
 {
     internal class EmployeeConfig : IEntityTypeConfiguration<Employee>
     {

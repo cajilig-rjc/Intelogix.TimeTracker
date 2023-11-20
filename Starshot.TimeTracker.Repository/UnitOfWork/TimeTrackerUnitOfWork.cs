@@ -1,7 +1,7 @@
-﻿using Starshot.TimeTracker.Data;
-using Starshot.TimeTracker.Data.Models;
+﻿using Intelogix.TimeTracker.Data;
+using Intelogix.TimeTracker.Data.Models;
 
-namespace Starshot.TimeTracker.Repository.UnitOfWork
+namespace Intelogix.TimeTracker.Repository.UnitOfWork
 {
     public class TimeTrackerUnitOfWork:ITimeTrackerUnitOfWork
     {

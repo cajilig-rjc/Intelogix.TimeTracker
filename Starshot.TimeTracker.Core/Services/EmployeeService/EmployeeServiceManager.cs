@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.Logging;
-using Starshot.TimeTracker.Core.Mappings;
-using Starshot.TimeTracker.Core.Mappings.Profiles;
-using Starshot.TimeTracker.Data.Models;
-using Starshot.TimeTracker.Dtos;
-using Starshot.TimeTracker.Repository.UnitOfWork;
-using Starshot.TimeTracker.Requests;
-using Starshot.TimeTracker.Responses;
+using Intelogix.TimeTracker.Core.Mappings;
+using Intelogix.TimeTracker.Core.Mappings.Profiles;
+using Intelogix.TimeTracker.Data.Models;
+using Intelogix.TimeTracker.Dtos;
+using Intelogix.TimeTracker.Repository.UnitOfWork;
+using Intelogix.TimeTracker.Requests;
+using Intelogix.TimeTracker.Responses;
 
-namespace Starshot.TimeTracker.Core.Services.EmployeeService
+namespace Intelogix.TimeTracker.Core.Services.EmployeeService
 {
     public class EmployeeServiceManager:IEmployeeServiceManager
     {

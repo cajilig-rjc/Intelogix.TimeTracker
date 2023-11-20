@@ -1,8 +1,8 @@
 ﻿using Refit;
-using Starshot.TimeTracker.Requests;
-using Starshot.TimeTracker.Responses;
+using Intelogix.TimeTracker.Requests;
+using Intelogix.TimeTracker.Responses;
 
-namespace Starshot.TimeTracker.Clients
+namespace Intelogix.TimeTracker.Clients
 {
     public interface IEmployeeServiceClient
     {

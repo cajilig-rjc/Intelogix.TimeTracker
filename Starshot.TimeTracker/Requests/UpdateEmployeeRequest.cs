@@ -1,6 +1,6 @@
-﻿using Starshot.TimeTracker.Dtos;
+﻿using Intelogix.TimeTracker.Dtos;
 
-namespace Starshot.TimeTracker.Requests
+namespace Intelogix.TimeTracker.Requests
 {
     public class UpdateEmployeeRequest
     {

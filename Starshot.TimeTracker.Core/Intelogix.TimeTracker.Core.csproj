@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Starshot.TimeTracker.Data\Starshot.TimeTracker.Data.csproj" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\" />
+    <ProjectReference Include="..\Starshot.TimeTracker.Repository\Intelogix.TimeTracker.Repository.csproj" />
+    <ProjectReference Include="..\Starshot.TimeTracker\Intelogix.TimeTracker.csproj" />
   </ItemGroup>
 
 </Project>

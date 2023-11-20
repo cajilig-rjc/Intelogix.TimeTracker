@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Starshot.TimeTracker.Data;
+using Intelogix.TimeTracker.Data;
 
 #nullable disable
 
-namespace Starshot.TimeTracker.Data.Migrations
+namespace Intelogix.TimeTracker.Data.Migrations
 {
     [DbContext(typeof(TimeTrackerDbContext))]
     partial class TimeTrackerDbContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace Starshot.TimeTracker.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Starshot.TimeTracker.Data.Models.Employee", b =>
+            modelBuilder.Entity("Intelogix.TimeTracker.Data.Models.Employee", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace Starshot.TimeTracker.Data.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("Starshot.TimeTracker.Data.Models.TimeSheet", b =>
+            modelBuilder.Entity("Intelogix.TimeTracker.Data.Models.TimeSheet", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,7 +67,7 @@ namespace Starshot.TimeTracker.Data.Migrations
                     b.ToTable("TimeSheets");
                 });
 
-            modelBuilder.Entity("Starshot.TimeTracker.Data.Models.User", b =>
+            modelBuilder.Entity("Intelogix.TimeTracker.Data.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -106,9 +106,9 @@ namespace Starshot.TimeTracker.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Starshot.TimeTracker.Data.Models.TimeSheet", b =>
+            modelBuilder.Entity("Intelogix.TimeTracker.Data.Models.TimeSheet", b =>
                 {
-                    b.HasOne("Starshot.TimeTracker.Data.Models.Employee", "Employee")
+                    b.HasOne("Intelogix.TimeTracker.Data.Models.Employee", "Employee")
                         .WithMany("TimeSheets")
                         .HasForeignKey("UserIdFk")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -117,7 +117,7 @@ namespace Starshot.TimeTracker.Data.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("Starshot.TimeTracker.Data.Models.Employee", b =>
+            modelBuilder.Entity("Intelogix.TimeTracker.Data.Models.Employee", b =>
                 {
                     b.Navigation("TimeSheets");
                 });

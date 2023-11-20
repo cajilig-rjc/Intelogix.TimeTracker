@@ -1,6 +1,6 @@
-﻿using Starshot.TimeTracker.Dtos;
+﻿using Intelogix.TimeTracker.Dtos;
 
-namespace Starshot.TimeTracker.Responses
+namespace Intelogix.TimeTracker.Responses
 {
     public class CreateEmployeeResponse:ErrorDto
     {

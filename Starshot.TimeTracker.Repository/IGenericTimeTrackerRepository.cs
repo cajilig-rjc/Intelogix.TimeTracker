@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Starshot.TimeTracker.Repository
+namespace Intelogix.TimeTracker.Repository
 {
     public interface IGenericTimeTrackerRepository<TEntity> where TEntity : class
     {

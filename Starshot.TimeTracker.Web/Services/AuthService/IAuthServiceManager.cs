@@ -1,4 +1,4 @@
-﻿namespace Starshot.TimeTracker.Web.Services.AuthService
+﻿namespace Intelogix.TimeTracker.Web.Services.AuthService
 {
     public interface IAuthServiceManager
     {

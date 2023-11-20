@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
 using Refit;
-using Starshot.TimeTracker.Clients;
-using Starshot.TimeTracker.Web;
-using Starshot.TimeTracker.Web.Services.AuthService;
+using Intelogix.TimeTracker.Clients;
+using Intelogix.TimeTracker.Web;
+using Intelogix.TimeTracker.Web.Services.AuthService;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 

@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace Starshot.TimeTracker.Common.Security
+namespace Intelogix.TimeTracker.Common.Security
 {
     public static class AesCrypto
     {

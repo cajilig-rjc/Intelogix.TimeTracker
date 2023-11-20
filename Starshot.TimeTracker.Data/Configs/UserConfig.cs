@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Configuration;
-using Starshot.TimeTracker.Common.Security;
-using Starshot.TimeTracker.Data.Models;
-namespace Starshot.TimeTracker.Data.Configs
+using Intelogix.TimeTracker.Common.Security;
+using Intelogix.TimeTracker.Data.Models;
+namespace Intelogix.TimeTracker.Data.Configs
 {
     internal class UserConfig : IEntityTypeConfiguration<User>
     {

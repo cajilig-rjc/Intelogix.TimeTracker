@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Starshot.TimeTracker.Data;
+using Intelogix.TimeTracker.Data;
 using System.Linq.Expressions;
 
-namespace Starshot.TimeTracker.Repository
+namespace Intelogix.TimeTracker.Repository
 {
     public class GenericTimeTrackerRepository<TEntity> : IGenericTimeTrackerRepository<TEntity> where TEntity : class
     {

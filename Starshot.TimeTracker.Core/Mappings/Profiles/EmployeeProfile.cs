@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Starshot.TimeTracker.Data.Models;
-using Starshot.TimeTracker.Dtos;
-using Starshot.TimeTracker.Responses;
+using Intelogix.TimeTracker.Data.Models;
+using Intelogix.TimeTracker.Dtos;
+using Intelogix.TimeTracker.Responses;
 
-namespace Starshot.TimeTracker.Core.Mappings.Profiles
+namespace Intelogix.TimeTracker.Core.Mappings.Profiles
 {
     internal class EmployeeProfile : Profile
     {

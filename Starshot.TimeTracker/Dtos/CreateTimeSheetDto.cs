@@ -1,4 +1,4 @@
-﻿namespace Starshot.TimeTracker.Dtos
+﻿namespace Intelogix.TimeTracker.Dtos
 {
     public class CreateTimeSheetDto
     {

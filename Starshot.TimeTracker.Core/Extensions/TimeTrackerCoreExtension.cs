@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Starshot.TimeTracker.Core.Services.EmployeeService;
+using Intelogix.TimeTracker.Core.Services.EmployeeService;
 
-namespace Starshot.TimeTracker.Core.Extensions
+namespace Intelogix.TimeTracker.Core.Extensions
 {
     public static class TimeTrackerCoreExtension
     {

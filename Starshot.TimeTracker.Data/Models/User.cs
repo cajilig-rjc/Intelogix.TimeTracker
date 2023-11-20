@@ -1,4 +1,4 @@
-﻿namespace Starshot.TimeTracker.Data.Models
+﻿namespace Intelogix.TimeTracker.Data.Models
 {
     public class User
     {

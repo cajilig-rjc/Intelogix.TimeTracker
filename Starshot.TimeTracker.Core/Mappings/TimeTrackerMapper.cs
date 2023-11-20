@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace Starshot.TimeTracker.Core.Mappings
+namespace Intelogix.TimeTracker.Core.Mappings
 {
     internal static class TimeTrackerMapper
     {

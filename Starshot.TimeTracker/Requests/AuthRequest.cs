@@ -1,4 +1,4 @@
-﻿namespace Starshot.TimeTracker.Requests
+﻿namespace Intelogix.TimeTracker.Requests
 {
     public class AuthRequest
     {

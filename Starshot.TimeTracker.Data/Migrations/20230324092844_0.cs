@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Starshot.TimeTracker.Data.Migrations
+namespace Intelogix.TimeTracker.Data.Migrations
 {
     /// <inheritdoc />
     public partial class _0 : Migration
