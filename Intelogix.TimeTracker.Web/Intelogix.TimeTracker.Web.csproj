@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Starshot.TimeTracker\Intelogix.TimeTracker.csproj" />
+    <ProjectReference Include="..\Intelogix.TimeTracker\Intelogix.TimeTracker.csproj" />
   </ItemGroup>
 
 </Project>
